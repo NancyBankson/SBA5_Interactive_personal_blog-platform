@@ -1,8 +1,10 @@
 // Declarations
-let title = document.getElementById("title-el");
-let body = document.getElementById("body-el");
-let saveButton = document.getElementById("form-el");
-let container = document.getElementById("container-el");
+const title = document.getElementById("title-el");
+const body = document.getElementById("body-el");
+const saveButton = document.getElementById("form-el");
+const container = document.getElementById("container-el");
+const titleError = document.getElementById("title-error-el");
+const bodyError = document.getElementById("body-error-el");
 
 let blogArray = [];
 let blogId = 1;
@@ -42,6 +44,26 @@ window.addEventListener('load', () => {
             blogArray = retrievedArray;
         }
     }
+})
+
+// Check validity of title
+title.addEventListener("input", function (event) {
+    if (title.validity.valueMissing) {
+        title.setCustomValidity("Please enter a title for your blog entry");
+    }  else {
+        title.setCustomValidity("");
+    }
+    titleError.textContent = title.validationMessage;
+})
+
+// Check validity of body
+body.addEventListener("input", function (event) {
+    if (body.validity.valueMissing) {
+        body.setCustomValidity("Please enter a body for your blog entry");
+    }  else {
+        body.setCustomValidity("");
+    }
+    bodyError.textContent = body.validationMessage;
 })
 
 // Event listeners

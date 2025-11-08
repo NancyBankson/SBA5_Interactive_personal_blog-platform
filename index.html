@@ -16,9 +16,11 @@
     <div>
         <form id="form-el">
             <label>Blog title</label>
-            <input type="text" id="title-el" />
+            <input type="text" id="title-el" required/>
+            <span class="error-message" id="title-error-el"></span>
             <label>Blog body</label>
-            <textarea id="body-el"></textarea>
+            <textarea id="body-el" required></textarea>
+            <span class="error-message" id="body-error-el"></span>
             <button type="submit" id="button-el">Save blog entry</button>
         </form>
         <div class="array-container" id="container-el">
