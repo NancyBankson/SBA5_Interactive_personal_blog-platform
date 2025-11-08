@@ -35,6 +35,7 @@ window.addEventListener('load', () => {
 
             let blogButton = document.createElement("button");
             blogButton.id = `butt${blogId}`;
+            blogButton.setAttribute("class", "remove");
             blogButton.textContent = "Delete";
             newBlogDiv.appendChild(blogButton);
 
@@ -47,7 +48,7 @@ window.addEventListener('load', () => {
 saveButton.addEventListener("submit", function (event) {
     event.preventDefault();
     let blogObject = {};
-    blogObject.Number = blogId;
+    // blogObject.Number = blogId;
 
     let newBlogDiv = document.createElement("div");
     newBlogDiv.setAttribute("class", "blog-container");
@@ -70,24 +71,21 @@ saveButton.addEventListener("submit", function (event) {
     blogButton.setAttribute("class", "remove");
     blogButton.textContent = "Delete";
     newBlogDiv.appendChild(blogButton);
-    console.log(blogArray);
     blogArray.push(blogObject);
     localStorage.setItem("thearray", JSON.stringify(blogArray));
     blogId++;
-    console.log(blogArray);
     title.value = "";
     body.value = "";
 })
 
 container.addEventListener("click", (event) => {
-    console.log("clicked");
     if (event.target.classList.contains("remove")) {
-        console.log("targeted");
         const blogToRemove = event.target.closest("div");
         let blogToRemoveId = event.target.closest("button").id;
         let itemId = parseInt(blogToRemoveId.slice(4));
         itemId--;
         blogArray.splice(itemId, 1);
+        localStorage.setItem("thearray", JSON.stringify(blogArray));
         blogToRemove.remove();
-    } else { console.log("bypassed") }
+    } 
 })
