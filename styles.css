@@ -1,0 +1,33 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 3px 10px;
+    background-color: #99D5C9;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin: 10px 0px;
+}
+form input, textarea {
+    margin: 0px 8px;
+    border-radius: 5px;
+}
+
+#button-el {
+    align-self: end;
+    margin-top: 10px;
+    margin-right: 8px;
+    background-color: #645E9D;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+.remove {
+    background-color: #645E9D;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
