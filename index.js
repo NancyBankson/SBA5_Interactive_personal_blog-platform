@@ -35,6 +35,12 @@ window.addEventListener('load', () => {
             blogBody.textContent = retrievedArray[i].Body;
             newBlogDiv.appendChild(blogBody);
 
+            let editButton = document.createElement("button");
+            editButton.id = `edit${blogId}`;
+            editButton.setAttribute("class", "edit");
+            editButton.textContent = "Edit";
+            newBlogDiv.appendChild(editButton);
+
             let blogButton = document.createElement("button");
             blogButton.id = `butt${blogId}`;
             blogButton.setAttribute("class", "remove");
@@ -50,7 +56,7 @@ window.addEventListener('load', () => {
 title.addEventListener("input", function (event) {
     if (title.validity.valueMissing) {
         title.setCustomValidity("Please enter a title for your blog entry");
-    }  else {
+    } else {
         title.setCustomValidity("");
     }
     titleError.textContent = title.validationMessage;
@@ -60,7 +66,7 @@ title.addEventListener("input", function (event) {
 body.addEventListener("input", function (event) {
     if (body.validity.valueMissing) {
         body.setCustomValidity("Please enter a body for your blog entry");
-    }  else {
+    } else {
         body.setCustomValidity("");
     }
     bodyError.textContent = body.validationMessage;
@@ -88,6 +94,12 @@ saveButton.addEventListener("submit", function (event) {
     blogBody.textContent = body.value;
     newBlogDiv.appendChild(blogBody);
 
+    let editButton = document.createElement("button");
+    editButton.id = `edit${blogId}`;
+    editButton.setAttribute("class", "edit");
+    editButton.textContent = "Edit";
+    newBlogDiv.appendChild(editButton);
+
     let blogButton = document.createElement("button");
     blogButton.id = `butt${blogId}`;
     blogButton.setAttribute("class", "remove");
@@ -109,5 +121,5 @@ container.addEventListener("click", (event) => {
         blogArray.splice(itemId, 1);
         localStorage.setItem("thearray", JSON.stringify(blogArray));
         blogToRemove.remove();
-    } 
+    }
 })
