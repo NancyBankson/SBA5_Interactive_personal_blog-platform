@@ -1,7 +1,10 @@
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family:Arial, Helvetica, sans-serif;
     padding: 3px 10px;
     background-color: #99D5C9;
+}
+h1 {
+    margin: 0px 70px;
 }
 form {
     display: flex;
@@ -9,25 +12,43 @@ form {
 }
 
 form label {
-    margin: 10px 0px;
+    margin: 10px 70px;
+    font-weight: 600;
 }
 form input, textarea {
-    margin: 0px 8px;
-    border-radius: 5px;
+    margin: 0px 80px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: #f5ecd4;
 }
 
 #button-el {
     align-self: end;
+    font-size: 1.2rem;
     margin-top: 10px;
-    margin-right: 8px;
+    margin-right: 80px;
     background-color: #645E9D;
     color: white;
     padding: 5px 8px;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 .remove {
+    font-size: 1rem;
     background-color: #645E9D;
     color: white;
     padding: 5px 8px;
-    border-radius: 5px;
+    border-radius: 8px;
+    margin: 20px 80px 10px;
+}
+h2 {
+    margin: 20px 70px;
+}
+p {
+    line-height: 1.5;
+    border: 1px solid #425f5a;
+    box-shadow: 2px 2px 4px #425f5a;
+    margin: 0px 80px;
+    padding: 20px 30px;
+    background-color: #afded4;
+    border-radius: 8px;
 }
