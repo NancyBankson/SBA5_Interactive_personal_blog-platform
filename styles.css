@@ -52,3 +52,7 @@ p {
     background-color: #afded4;
     border-radius: 8px;
 }
+span {
+    color: red;
+    margin: 10px 80px;
+}
