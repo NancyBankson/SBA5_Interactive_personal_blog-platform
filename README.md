@@ -37,4 +37,4 @@ The blog platform included the following features:
 
 ## Reflection 
 
-For this project, I felt well equipped to handle the challenge.  I did not have much difficulty writing the JavaScript or manipulating the DOM.  I faced some challenges with bugs in my code.  For instance, when I created the event listener for form submission, I targeted the button element instead of the form element.  Once I reviewed our recent form assignement, I found my error and corrected it.  Since I had some extra time, I styled the form.  I'm usually not satisfied with the look of my projects and wish I had access to a disigner so I could implement their design instead.
+For this project, I felt well equipped to handle the challenge.  I faced some challenges with bugs in my code.  For instance, when I created the event listener for form submission, I targeted the button element instead of the form element.  Once I reviewed our recent form assignement, I found my error and corrected it.  I had some difficulty with the edit button.  I had some tracking errors with the blog numbering system, but I was able to correct the errors.
