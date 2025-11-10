@@ -16,20 +16,18 @@ window.addEventListener('load', () => {
     if (retrievedArray) {
         blogId = 1;
         for (let i = 0; i < retrievedArray.length; i++) {
-            // let blogObject = {};
-            // blogObject.Number = blogId;
 
             let newBlogDiv = document.createElement("div");
             newBlogDiv.setAttribute("class", "blog-container");
             container.appendChild(newBlogDiv);
 
-            // blogObject.Title = retrievedArray[i].Title;
+            retrievedArray[i].Number = blogId;
+
             let blogTitle = document.createElement("h2");
             blogTitle.id = `titl${blogId}`;
             blogTitle.textContent = retrievedArray[i].Title;
             newBlogDiv.appendChild(blogTitle);
 
-            // blogObject.Body = retrievedArray[i].Body;
             let blogBody = document.createElement("p");
             blogBody.id = `body${blogId}`;
             blogBody.textContent = retrievedArray[i].Body;
@@ -49,8 +47,7 @@ window.addEventListener('load', () => {
 
             blogArray = retrievedArray;
             blogId++;
-            // blogId = blogArray.length - 1;
-        } 
+        }
     }
 })
 
@@ -74,7 +71,7 @@ body.addEventListener("input", function (event) {
     bodyError.textContent = body.validationMessage;
 })
 
-// Event listeners
+// Event listener for form submission
 saveButton.addEventListener("submit", function (event) {
     event.preventDefault();
     let blogObject = {};
@@ -114,6 +111,7 @@ saveButton.addEventListener("submit", function (event) {
     body.value = "";
 })
 
+// Edit function
 container.addEventListener("click", (event) => {
     if (event.target.classList.contains("edit")) {
         const blogToEdit = event.target.closest("div");
@@ -127,8 +125,8 @@ container.addEventListener("click", (event) => {
         // localStorage.setItem("thearray", JSON.stringify(blogArray));
         blogToEdit.remove();
         let editDiv = document.createElement("div");
-        editDiv.innerHTML =    
-        `<form id="form-edit">
+        editDiv.innerHTML =
+            `<form id="form-edit">
             <label>Blog title</label>
             <textarea id="title-edit" required>${titleToEdit}</textarea>
             <span class="error-message" id="title-edit-error"></span>
@@ -140,7 +138,7 @@ container.addEventListener("click", (event) => {
         container.appendChild(editDiv);
         let saveEditButton = document.getElementById("form-edit");
         document.getElementById("title-edit").focus();
-        saveEditButton.addEventListener("submit", function() {
+        saveEditButton.addEventListener("submit", function () {
             let blogObject = {};
             let newTitle = document.getElementById("title-edit");
             let newBody = document.getElementById("body-edit");
@@ -151,10 +149,12 @@ container.addEventListener("click", (event) => {
             blogArray.splice(itemId, 1);
             blogArray.sort((a, b) => a.Number - b.Number);
             localStorage.setItem("thearray", JSON.stringify(blogArray));
-        })        
+        })
     }
+    
 })
 
+// delete function
 container.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove")) {
         const blogToRemove = event.target.closest("div");
