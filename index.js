@@ -7,16 +7,16 @@ const titleError = document.getElementById("title-error-el");
 const bodyError = document.getElementById("body-error-el");
 
 let blogArray = [];
-let blogId = 1;
+blogId = 1;
 
 window.addEventListener('load', () => {
     let retrievedArray = [];
     const retrievedString = localStorage.getItem("thearray");
     retrievedArray = JSON.parse(retrievedString);
     if (retrievedArray) {
+        blogId = 1;
         for (let i = 0; i < retrievedArray.length; i++) {
             // let blogObject = {};
-            blogId = 1;
             // blogObject.Number = blogId;
 
             let newBlogDiv = document.createElement("div");
@@ -48,7 +48,9 @@ window.addEventListener('load', () => {
             newBlogDiv.appendChild(blogButton);
 
             blogArray = retrievedArray;
-        }
+            blogId++;
+            // blogId = blogArray.length - 1;
+        } 
     }
 })
 
@@ -76,7 +78,7 @@ body.addEventListener("input", function (event) {
 saveButton.addEventListener("submit", function (event) {
     event.preventDefault();
     let blogObject = {};
-    // blogObject.Number = blogId;
+    blogObject.Number = blogId;
 
     let newBlogDiv = document.createElement("div");
     newBlogDiv.setAttribute("class", "blog-container");
@@ -118,6 +120,7 @@ container.addEventListener("click", (event) => {
         let blogToEditId = event.target.closest("button").id;
         let itemId = parseInt(blogToEditId.slice(4));
         itemId--;
+        // let numberToEdit = blogArray[itemId].Number;
         let titleToEdit = blogArray[itemId].Title;
         let bodyToEdit = blogArray[itemId].Body;
         // blogArray.splice(itemId, 1);
@@ -141,16 +144,16 @@ container.addEventListener("click", (event) => {
             let blogObject = {};
             let newTitle = document.getElementById("title-edit");
             let newBody = document.getElementById("body-edit");
+            blogObject.Number = blogArray[itemId].Number;
             blogObject.Title = newTitle.value;
             blogObject.Body = newBody.value;
             blogArray.push(blogObject);
             blogArray.splice(itemId, 1);
+            blogArray.sort((a, b) => a.Number - b.Number);
             localStorage.setItem("thearray", JSON.stringify(blogArray));
-        })
-        
+        })        
     }
 })
-
 
 container.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove")) {
@@ -161,5 +164,6 @@ container.addEventListener("click", (event) => {
         blogArray.splice(itemId, 1);
         localStorage.setItem("thearray", JSON.stringify(blogArray));
         blogToRemove.remove();
+        window.location.reload();
     }
 })
