@@ -113,6 +113,46 @@ saveButton.addEventListener("submit", function (event) {
 })
 
 container.addEventListener("click", (event) => {
+    if (event.target.classList.contains("edit")) {
+        const blogToEdit = event.target.closest("div");
+        let blogToEditId = event.target.closest("button").id;
+        let itemId = parseInt(blogToEditId.slice(4));
+        itemId--;
+        let titleToEdit = blogArray[itemId].Title;
+        let bodyToEdit = blogArray[itemId].Body;
+        // blogArray.splice(itemId, 1);
+        // localStorage.setItem("thearray", JSON.stringify(blogArray));
+        blogToEdit.remove();
+        let editDiv = document.createElement("div");
+        editDiv.innerHTML =    
+        `<form id="form-edit">
+            <label>Blog title</label>
+            <textarea id="title-edit" required>${titleToEdit}</textarea>
+            <span class="error-message" id="title-edit-error"></span>
+            <label>Blog body</label>
+            <textarea id="body-edit" required>${bodyToEdit}</textarea>
+            <span class="error-message" id="body-edit-error"></span>
+            <button type="submit" id="button-edit">Save blog entry</button>
+        </form>`;
+        container.appendChild(editDiv);
+        let saveEditButton = document.getElementById("form-edit");
+        document.getElementById("title-edit").focus();
+        saveEditButton.addEventListener("submit", function() {
+            let blogObject = {};
+            let newTitle = document.getElementById("title-edit");
+            let newBody = document.getElementById("body-edit");
+            blogObject.Title = newTitle.value;
+            blogObject.Body = newBody.value;
+            blogArray.push(blogObject);
+            blogArray.splice(itemId, 1);
+            localStorage.setItem("thearray", JSON.stringify(blogArray));
+        })
+        
+    }
+})
+
+
+container.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove")) {
         const blogToRemove = event.target.closest("div");
         let blogToRemoveId = event.target.closest("button").id;

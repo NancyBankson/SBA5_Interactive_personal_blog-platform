@@ -21,12 +21,26 @@ form input, textarea {
     padding: 5px 10px;
     background-color: #f5ecd4;
 }
+#container-el {
+    padding-bottom: 80px;
+}
 
 #button-el {
     align-self: end;
     font-size: 1.2rem;
     margin-top: 10px;
     margin-right: 80px;
+    background-color: #645E9D;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 8px;
+}
+#button-edit {
+    align-self: end;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-right: 80px;
+    margin-bottom: 80px;
     background-color: #645E9D;
     color: white;
     padding: 5px 8px;
@@ -63,4 +77,7 @@ p {
 span {
     color: red;
     margin: 10px 80px;
+}
+#body-edit, #title-edit {
+    background-color: #9cece7;
 }
