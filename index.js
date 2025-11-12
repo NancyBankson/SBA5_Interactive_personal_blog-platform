@@ -9,7 +9,8 @@ const bodyError = document.getElementById("body-error-el");
 let blogArray = [];
 blogId = 1;
 
-window.addEventListener('load', () => {
+function render() {
+    container.innerHTML = "";
     let retrievedArray = [];
     const retrievedString = localStorage.getItem("thearray");
     retrievedArray = JSON.parse(retrievedString);
@@ -49,6 +50,13 @@ window.addEventListener('load', () => {
             blogId++;
         }
     }
+    return blogArray;
+}
+
+
+window.addEventListener('load', () => {
+    render();
+    blogId = blogArray.length + 1;
 })
 
 // Check validity of title
@@ -70,6 +78,7 @@ body.addEventListener("input", function (event) {
     }
     bodyError.textContent = body.validationMessage;
 })
+
 
 // Event listener for form submission
 saveButton.addEventListener("submit", function (event) {
@@ -118,11 +127,8 @@ container.addEventListener("click", (event) => {
         let blogToEditId = event.target.closest("button").id;
         let itemId = parseInt(blogToEditId.slice(4));
         itemId--;
-        // let numberToEdit = blogArray[itemId].Number;
         let titleToEdit = blogArray[itemId].Title;
         let bodyToEdit = blogArray[itemId].Body;
-        // blogArray.splice(itemId, 1);
-        // localStorage.setItem("thearray", JSON.stringify(blogArray));
         blogToEdit.remove();
         let editDiv = document.createElement("div");
         editDiv.innerHTML =
@@ -151,7 +157,6 @@ container.addEventListener("click", (event) => {
             localStorage.setItem("thearray", JSON.stringify(blogArray));
         })
     }
-    
 })
 
 // delete function
@@ -164,6 +169,7 @@ container.addEventListener("click", (event) => {
         blogArray.splice(itemId, 1);
         localStorage.setItem("thearray", JSON.stringify(blogArray));
         blogToRemove.remove();
-        window.location.reload();
+        render();
+        blogId = blogArray.length + 1;
     }
 })

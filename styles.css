@@ -78,6 +78,10 @@ span {
     color: red;
     margin: 10px 80px;
 }
+.error-message {
+    color: red;
+    margin: 10px 80px;
+}
 #body-edit, #title-edit {
     background-color: #9cece7;
 }
